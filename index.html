@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Focus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body> 
+    <header>
+        <a href="#home" class="logo">Template <b>Focus</b></a>
+
+        <!-- Botão hamburguer -->
+        <div class="mobile-menu" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Organize sua vida com o <b>Focus</b></h1>
+                <p>Crie hábitos, acompanhe seu progresso e alcance seus objetivos de forma simples e eficaz.</p>
+                <a href="#services" class="btn-cta" id="start-btn" data-payment-url="">Comece Agora</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="about-wrapper">
+                <div class="about-media" aria-hidden="true">
+                    <img src="./images/focusimage.png" alt="Ilustração de organização" />
+                </div>
+                <div class="about-content">
+                    <h2>Sobre o Focus</h2>
+                    <p>O Focus é a sua ferramenta para transformar ideias em hábitos. Ele ajuda você a definir pequenas metas diárias, monitorar o progresso e refletir sobre seu desempenho com um diário integrado.</p>
+                    <ul class="about-list">
+                        <li><strong>Planejamento prático:</strong> Divida grandes metas em ações diárias.</li>
+                        <li><strong>Feedback visual:</strong> Gráficos simples e relatórios rápidos.</li>
+                        <li><strong>Diário de reflexões:</strong> Anote aprendizados e observe padrões.</li>
+                    </ul>
+                    <a href="#contact" class="btn-cta">Fale com a gente</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="services-header">
+                <h2>O que oferecemos</h2>
+                <p class="services-intro">Soluções pensadas para você manter foco, criar consistência e celebrar pequenas vitórias.</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="card-icon">🧭</div>
+                    <h3>Planejamento de Habits</h3>
+                    <p>Estruture rotinas com lembretes e metas ajustáveis para manter consistência.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="card-icon">📈</div>
+                    <h3>Monitoramento</h3>
+                    <p>Acompanhe seu progresso com indicadores visuais e compare períodos.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="card-icon">🗂️</div>
+                    <h3>Relatórios</h3>
+                    <p>Relatórios semanais e mensais para entender padrões e ajustar estratégias.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="card-icon">✍️</div>
+                    <h3>Journal & Reflexão</h3>
+                    <p>Espaço seguro para registrar aprendizados e pensamentos diários.</p>
+                </article>
+            </div>
+
+            <div class="services-cta">
+                <a href="#home" class="btn-cta">Comece grátis</a>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO DE CONTATO -->
+        <section id="contact">
+            <h2>Contato</h2>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Seu nome" required>
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+                <button type="submit" class="btn-cta">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Template <b>Focus</b>. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script do menu responsivo -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Redirecionamento do botão Comece Agora para link de pagamento quando configurado
+        (function() {
+            const startBtn = document.getElementById('start-btn');
+            if (!startBtn) return;
+
+            startBtn.addEventListener('click', (e) => {
+                // usa dataset para ler data-payment-url de forma segura
+                const payUrl = (startBtn.dataset && startBtn.dataset.paymentUrl) ? startBtn.dataset.paymentUrl.trim() : '';
+                if (payUrl) {
+                    e.preventDefault();
+                    // abre em nova aba por segurança
+                    window.open(payUrl, '_blank');
+                } else {
+                    // se não houver url, comportamento padrão segue (ancora para #services)
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
